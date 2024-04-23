@@ -53,12 +53,10 @@ jobs:
           source ${GITHUB_WORKSPACE}/build/${FOLDER_NAME}/relevance/settings.ini
         fi
         source ${GITHUB_WORKSPACE}/build/${{ env.FOLDER_NAME }}/common.sh && Diy_menu1
-
     - name: 清理因转换CPU而停止的工作流程
       run: |
         cd ${GITHUB_WORKSPACE}
         source build/${FOLDER_NAME}/common.sh && Diy_delruns
-
     - name: CPU检测
       run: |
         cd ${GITHUB_WORKSPACE}
@@ -87,7 +85,6 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /${{ env.DIY_WORK }}
         sudo chown ${USER}:${GROUPS} /${{ env.DIY_WORK }}
-
     #- name: 升级rustc到1.70.0
       #run: |
                 #curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain 1.70.0
@@ -120,7 +117,6 @@ jobs:
       run: |
         cd openwrt
         source ${BUILD_PATH}/common.sh && Diy_menu5
-
     - name: 生成"${{matrix.target}}"配置文件
       run: |
         cd openwrt
